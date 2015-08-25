@@ -1,0 +1,144 @@
+<html>
+<head>
+	<title>
+	</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<style type="text/css">
+		#macysSlideshow {
+			/*width and height of the slides go here*/
+			width:735px;
+			height:300px;
+			border:1px solid grey;
+			margin:0 auto;
+			overflow: hidden;
+			position: relative;
+
+
+		}
+		#macysSlideshowWrapper {
+			/*width of all the slides combined (slidesWidth * 3) goes here*/
+			width:4380px;
+			height:290px;
+			margin:0;
+			padding:0;
+			position: relative;
+
+		}
+		.macysSlide {
+			/*slide with and height goes here*/
+			width:730px;
+			height:290px;
+			float:left;
+			position: relative;
+			margin:0;
+			padding:0;
+		}
+		.arrow {
+			position: absolute;
+		}
+
+		/*add left and right arrow positioning*/
+		#arrow_left {
+			top:50%;
+
+		}
+		#arrow_right {
+			top:50%;
+			left:700px;
+		}
+	</style>
+</head>
+<body>
+	<div id="macysSlideshow">
+		<div id="macysSlideshowWrapper">
+			<div class="macysSlide">
+				<!-- replace with your images -->
+
+				<img src="images/credit_banner2_03.jpg" />
+
+			</div>
+			<div class="macysSlide">
+				<!-- replace with your images -->
+
+				<img src="images/credit_banner2_03.jpg" />
+
+			</div>
+			<div class="macysSlide">
+				<!-- replace with your images -->
+
+				<img src="images/credit_banner2_03.jpg" />
+
+			</div>
+			<div class="macysSlide">
+				<!-- replace with your images -->
+				<img src="images/credit_banner1_03.jpg" />
+			</div>
+			<div class="macysSlide">
+				<!-- replace with your images -->
+
+				<img src="images/credit_banner2_03.jpg" />
+
+			</div>
+			<div class="macysSlide">
+				<!-- replace with your images -->
+
+				<img src="images/credit_banner3_03.jpg" />
+
+			</div>
+		</div>
+		<div class="arrow" id="arrow_right">
+			<!-- //right arrow image goes here -->
+			<img src="images/Credit_LearnApply_06.png" />
+		</div>
+		<div class="arrow" id="arrow_left">
+			<!-- //left arrow image goes here -->
+			<img src="images/arrows_09.png" />
+		</div>
+
+	</div>
+
+	<script>
+		//change slideWidth variable to the size of your slide
+
+		$(document).ready(function() {
+
+			var currentPosition= 0,
+				counter = 0,
+				slideWidth = 730,
+				slides = $('.macysSlide'),
+				numSlides = slides.length;
+
+			
+			function displayArrows(position) {
+	
+				if (currentPosition === 0) {
+					$('#arrow_left').hide();
+				}
+				else if (currentPosition === numSlides - 1) {
+					$('#arrow_right').hide();
+				}
+				else {
+					$('#arrow_right').show();
+					$('#arrow_left').show();
+
+				}
+			}	
+
+			function moveSlide() {
+				$('#macysSlideshowWrapper').animate({'margin-left': (slideWidth * -currentPosition)})
+			}
+
+			$('.arrow').click(function() {
+				currentPosition = ($(this).attr('id')==='arrow_right' ? currentPosition + 1 : currentPosition - 1)
+				displayArrows(currentPosition);
+				moveSlide();
+			})
+
+			displayArrows(currentPosition)
+
+
+		})
+	</script>
+
+</body>
+</html>
